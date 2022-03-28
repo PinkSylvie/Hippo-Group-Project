@@ -62,4 +62,4 @@ Optional:
 * Lists of Notes -> View a selected note or Create/Edit a Note
 
 ## Wireframes
-<img src="https://i.imgur.com/9CrjH1K.jpg" width=800><br>
+![Wireframe](/WireframeWithWires.png)
