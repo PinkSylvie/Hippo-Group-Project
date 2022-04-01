@@ -63,3 +63,19 @@ Optional:
 
 ## Wireframes
 ![Wireframe](/WireframeWithWires.png)
+
+## Schema 
+### Models
+#### Task
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the user task (default field) |
+   | user          | Pointer to User| user whose task belongs to |
+   | tittle        | String   | tittle of the task |
+   | description   | String   | description of the task|
+   | dueTime       | DateTime | time and date of when the task must be completed |
+   | reminderTime  | DateTime | time and date when the task will be reminded |
+   | attachment    | File     | file that will be propmted with the task  |
+   | createdAt     | DateTime | date when post is created (default field) |
+   | updatedAt     | DateTime | date when post is last updated (default field) |
