@@ -79,3 +79,28 @@ Optional:
    | attachment    | File     | file that will be propmted with the task  |
    | createdAt     | DateTime | date when post is created (default field) |
    | updatedAt     | DateTime | date when post is last updated (default field) |
+
+### Networking
+#### List of network requests by screen
+   - Home Feed Screen
+      - (Read/GET) Query all tasks where user is author
+         ```swift
+         let query = PFQuery(className:"Task")
+         query.whereKey("author", equalTo: currentUser)
+         query.order(byDescending: "createdAt")
+         query.findObjectsInBackground { (tasks: [PFObject]?, error: Error?) in
+            if let error = error { 
+               print(error.localizedDescription)
+            } else if let tasks = tasks {
+               print("Successfully retrieved \(task.overdue) tasks.")
+           // TODO: Do something with task|move into calendar activity...
+            }
+         }
+         ```
+   - Create task Screen 
+      - (Create/POST) Create a new task object
+   - Calendar | View tasks Screen
+      - (Read/GET) Query logged in user object
+      - (Read/GET) Query tasks objects for logged user
+      - (Delete) Delete existing task
+      - (Update/PUT) Update existing tasks
