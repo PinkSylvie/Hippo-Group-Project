@@ -2,11 +2,13 @@ package com.example.hippo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -23,6 +25,7 @@ public class SignUpActivity extends AppCompatActivity {
    private EditText etEmail;
    private EditText etPassword;
    private EditText etPassword2;
+   private TextView tvSignIn;
 
    private Button btnSignUp;
 
@@ -39,7 +42,11 @@ public class SignUpActivity extends AppCompatActivity {
 
         btnSignUp = findViewById(R.id.btnSignUp);
 
+        tvSignIn = findViewById(R.id.tvSignIn);
+
+        tvSignIn.setOnClickListener(goSignInActivity);
         btnSignUp.setOnClickListener(signUpUser);
+
 
     }
 
@@ -59,6 +66,14 @@ public class SignUpActivity extends AppCompatActivity {
         }
     };
 
+    private View.OnClickListener goSignInActivity = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(view.getContext(), SignInActivity.class);
+            startActivity(i);
+            finish();
+        }
+    };
 
 
     public void signUp(String firstName, String lastName, String email, String password){
@@ -175,5 +190,4 @@ public class SignUpActivity extends AppCompatActivity {
             throw new InvalidPasswordException(7);
         }
     }
-
 }
