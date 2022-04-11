@@ -9,7 +9,7 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/action_compose"
-        android:icon="@android:drawable/ic_menu_edit"
+        android:icon="@android:drawable/ic_menu_add"
         android:title="Create Task"
         app:showAsAction="always" />
     <item
@@ -17,5 +17,9 @@
         android:icon="@android:drawable/ic_menu_today"
         android:title="calendar"
         app:showAsAction="always"/>
-
+    <item
+        android:id="@+id/action_profile"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="Profile"
+        app:showAsAction="always" />
 </menu>

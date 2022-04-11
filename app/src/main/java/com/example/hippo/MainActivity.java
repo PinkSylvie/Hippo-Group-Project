@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.example.hippo.fragments.calendarFragment;
 import com.example.hippo.fragments.composeFragment;
+import com.example.hippo.fragments.profileFragment;
 import com.example.hippo.fragments.taskFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -39,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.action_calendar:
                         fragment = new calendarFragment();
+                        break;
+                    case R.id.action_profile:
+                        fragment = new profileFragment();
                         break;
                     default:
                         throw new IllegalStateException("Unexpected value: " + item.getItemId());
