@@ -15,7 +15,10 @@
         android:theme="@style/Theme.Hippo">
         <activity
             android:name=".SignInActivity"
-            android:exported="false" />
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
         <activity
             android:name=".SignUpActivity"
             android:exported="true">
