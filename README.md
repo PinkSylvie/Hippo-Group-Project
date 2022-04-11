@@ -88,6 +88,7 @@ Optional:
    | description   | String   | description of the task|
    | dueTime       | DateTime | time and date of when the task must be completed |
    | reminderTime  | DateTime | time and date when the task will be reminded |
+   | isDone        | Boolean  | shows if the task is done or not |
    | attachment    | File     | file that will be propmted with the task  |
    | createdAt     | DateTime | date when post is created (default field) |
    | updatedAt     | DateTime | date when post is last updated (default field) |
