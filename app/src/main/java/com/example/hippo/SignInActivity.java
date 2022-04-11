@@ -16,7 +16,7 @@ import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
-public class SignInActivity extends AppCompatActivity {
+public class SignInActivity extends SignUpActivity{
 
     public static final String TAG = "SignInActivity";
     private TextView tvSignUp;
@@ -41,40 +41,48 @@ public class SignInActivity extends AppCompatActivity {
         etSignInPassword = findViewById(R.id.etSignInPassword);
         btnSignIn = findViewById(R.id.btnSignIn);
         
-        btnSignIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.i(TAG, "onClick Log in/Sign in Button");
-                String username = etSignInEmail.getText().toString();
-                String password = etSignInPassword.getText().toString();
-                if(canSignIn(username,password)) {
-                    loginUser(username, password);
-                }
-            }
-        });
+        btnSignIn.setOnClickListener(signIn);
     }
 
 
-    public boolean canSignIn(String username, String password){
-        if(username.isEmpty() && password.isEmpty()){
+
+    private View.OnClickListener signIn = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            String email = etSignInEmail.getText().toString();
+            String password = etSignInPassword.getText().toString();
+            if(canSignIn(email, password)){
+                loginUser(email, password);
+            }
+        }
+    };
+
+
+    public boolean canSignIn(String email, String password){
+        if(email.isEmpty() && password.isEmpty()){
             Toast.makeText(this, "Type your credentials!", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if(username.isEmpty()){
-            Toast.makeText(this, "Type your email!", Toast.LENGTH_SHORT).show();
-            return false;
-        }
+
         if(password.isEmpty()){
             Toast.makeText(this, "No password has been typed", Toast.LENGTH_SHORT).show();
             return false;
         }
+
+        try{
+            isValidEmail(email);
+        } catch (InvalidEmailException e) {
+            Log.w(TAG, e.getMessage() + e.printMessage());
+            Toast.makeText(this, e.printMessage(), Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
         return true;
     }
 
-
-    private void loginUser(String username, String password) {
-        Log.i(TAG, "Attempting to Log In"+ username);
-        ParseUser.logInInBackground(username, password, new LogInCallback() {
+    private void loginUser(String email, String password) {
+        Log.i(TAG, "Attempting to Log In: "+ email);
+        ParseUser.logInInBackground(email, password, new LogInCallback() {
             @Override
             public void done(ParseUser user, ParseException e) {
                 if(e !=null){
