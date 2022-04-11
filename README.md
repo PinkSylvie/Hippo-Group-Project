@@ -26,6 +26,12 @@ Our app is an organization app that helps the user to organize what they need to
 ## Product Spec
 ### 1. User Stories (Required and Optional)
 
+**Completed Stories**
+
+- [X] Setup Backend for User purposes
+- [X] Setup User Login
+- [X] Setup User Signin
+
 **Required Must-have Stories**
 
 * User has the ability to make lists with reminder and dates.
