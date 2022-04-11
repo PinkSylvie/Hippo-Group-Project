@@ -44,6 +44,11 @@ Our app is an organization app that helps the user to organize what they need to
 * Add location of a to-do
 * Add visual themes for the user to pick and change the visual interface 
 
+**1st Sprint GIF**
+Here's a walkthrough of implemented user stories:
+
+<img src='https://github.com/PinkSylvie/EDM-Group-Project/blob/main/Hippo%201st%20Sprint.gif' width='' alt='1st Sprint Walkthrough' />
+
 ### 2. Screen Archetypesm
 
 * List of to-do lists Screen - The user would be able to see their created to-do lists and create new ones.
