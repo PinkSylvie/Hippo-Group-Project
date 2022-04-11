@@ -32,7 +32,7 @@ public class SignInActivity extends SignUpActivity{
         tvSignUp = findViewById(R.id.tvSignUpTap);
         tvSignUp.setOnClickListener(goSignUpActivity);
 
-        if(ParseUser.getCurrentUser()!=null){
+        if(HippoUser.getCurrentUser()!=null){
             //comentado de momento para probar las distintas partes del sign in / log in
             // Crear el boton de log out para que esta parte sea funcional, dejando tu usuario en la app
             //goMainActivity();
@@ -82,7 +82,7 @@ public class SignInActivity extends SignUpActivity{
 
     private void loginUser(String email, String password) {
         Log.i(TAG, "Attempting to Log In: "+ email);
-        ParseUser.logInInBackground(email, password, new LogInCallback() {
+        HippoUser.logInInBackground(email, password, new LogInCallback() {
             @Override
             public void done(ParseUser user, ParseException e) {
                 if(e !=null){
