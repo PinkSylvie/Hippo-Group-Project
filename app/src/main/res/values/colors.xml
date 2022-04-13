@@ -8,5 +8,6 @@
     <color name="black">#000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="minimal">#3D3D3D</color>
+    <color name="minimal_half">#BF3D3D3D</color>
     <color name="text_link">#587FFF</color>
 </resources>

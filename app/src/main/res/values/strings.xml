@@ -9,4 +9,6 @@
     <string name="email">Email</string>
     <string name="first_name">First Name</string>
     <string name="rewrite_password">Rewrite Password</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

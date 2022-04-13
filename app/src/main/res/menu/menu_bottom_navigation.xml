@@ -4,22 +4,22 @@
 
     <item
         android:id="@+id/action_tasks"
-        android:icon="@android:drawable/ic_menu_day"
-        android:title="tasks"
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/action_compose"
-        android:icon="@android:drawable/ic_menu_add"
-        android:title="Create Task"
+        android:icon="@drawable/ic_action_home"
+        android:title="Tasks"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_calendar"
-        android:icon="@android:drawable/ic_menu_today"
-        android:title="calendar"
-        app:showAsAction="always"/>
+        android:icon="@drawable/ic_action_calendar"
+        android:title="Calendar"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_compose"
+        android:icon="@drawable/ic_action_add"
+        android:title="Create Task"
+        app:showAsAction="always" />
     <item
         android:id="@+id/action_profile"
-        android:icon="@drawable/ic_baseline_person_24"
+        android:icon="@drawable/ic_action_profile"
         android:title="Profile"
         app:showAsAction="always" />
 </menu>
