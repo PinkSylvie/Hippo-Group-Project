@@ -26,6 +26,12 @@ Our app is an organization app that helps the user to organize what they need to
 ## Product Spec
 ### 1. User Stories (Required and Optional)
 
+**Completed Stories**
+
+- [X] Setup Backend for User purposes
+- [X] Setup User Login
+- [X] Setup User Signin
+
 **Required Must-have Stories**
 
 * User has the ability to make lists with reminder and dates.
@@ -37,6 +43,12 @@ Our app is an organization app that helps the user to organize what they need to
 * Add a calendar feature that would be connected to the to-do lists
 * Add location of a to-do
 * Add visual themes for the user to pick and change the visual interface 
+
+**1st Sprint GIF**
+
+Here's a walkthrough of implemented user stories:
+
+<img src='https://github.com/PinkSylvie/EDM-Group-Project/blob/main/Hippo%201st%20Sprint.gif' width='' alt='1st Sprint Walkthrough' />
 
 ### 2. Screen Archetypesm
 
@@ -76,6 +88,7 @@ Optional:
    | description   | String   | description of the task|
    | dueTime       | DateTime | time and date of when the task must be completed |
    | reminderTime  | DateTime | time and date when the task will be reminded |
+   | isDone        | Boolean  | shows if the task is done or not |
    | attachment    | File     | file that will be propmted with the task  |
    | createdAt     | DateTime | date when post is created (default field) |
    | updatedAt     | DateTime | date when post is last updated (default field) |
