@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    tools:context=".fragments.composeFragment">
+
+    <EditText
+        android:id="@+id/etTaskDescription"
+        android:layout_width="374dp"
+        android:layout_height="63dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="173dp"
+        android:ems="10"
+        android:hint="What do you want to do?"
+        android:inputType="textPersonName"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/etDate"
+        android:layout_width="155dp"
+        android:layout_height="73dp"
+        android:layout_below="@+id/etTaskDescription"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="-13dp"
+        android:height="48dp"
+        android:drawableRight="@android:drawable/ic_menu_my_calendar"
+        android:ems="10"
+        android:hint="at which date?"
+        android:inputType="date"
+        android:maxLength="10"/>
+
+    <EditText
+        android:id="@+id/etTime"
+        android:layout_width="215dp"
+        android:layout_height="71dp"
+        android:layout_below="@+id/etTaskDescription"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="-11dp"
+        android:layout_marginEnd="22dp"
+        android:layout_toEndOf="@+id/etDate"
+        android:height="48dp"
+        android:drawableEnd="@android:drawable/ic_lock_idle_alarm"
+        android:ems="10"
+        android:hint="At what time?"
+        android:inputType="time"
+        android:maxLength="8" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etTime"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="146dp"
+        android:layout_toEndOf="@+id/etDate"
+        android:clickable="true"
+        app:backgroundTint="#564F4F"
+        app:srcCompat="@android:drawable/ic_menu_add" />
+
+    <EditText
+        android:id="@+id/etTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="89dp"
+        android:layout_marginTop="109dp"
+        android:ems="10"
+        android:hint="Title for task"
+        android:inputType="textPersonName"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/etReminderTime"
+        android:layout_width="265dp"
+        android:layout_height="81dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="289dp"
+        android:ems="10"
+        android:hint="You will be reminded at->"
+        android:inputType="time"
+        android:textAlignment="center"/>
+
+</RelativeLayout>
