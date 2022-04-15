@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
+    android:id="@+id/Task"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     tools:context=".fragments.composeFragment">
@@ -11,11 +12,11 @@
         android:id="@+id/etTaskDescription"
         android:layout_width="374dp"
         android:layout_height="63dp"
+        android:layout_below="@+id/etTitle"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="173dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="17dp"
         android:ems="10"
         android:hint="What do you want to do?"
         android:inputType="textPersonName"
@@ -34,7 +35,7 @@
         android:ems="10"
         android:hint="at which date?"
         android:inputType="date"
-        android:maxLength="10"/>
+        android:maxLength="10" />
 
     <EditText
         android:id="@+id/etTime"
@@ -58,9 +59,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/etTime"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="-1dp"
-        android:layout_marginTop="146dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="341dp"
         android:layout_toEndOf="@+id/etDate"
         android:clickable="true"
         app:backgroundTint="#564F4F"
@@ -72,8 +73,9 @@
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="89dp"
-        android:layout_marginTop="109dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="102dp"
+        android:layout_marginTop="27dp"
         android:ems="10"
         android:hint="Title for task"
         android:inputType="textPersonName"
@@ -83,12 +85,35 @@
         android:id="@+id/etReminderTime"
         android:layout_width="265dp"
         android:layout_height="81dp"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/etDate"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="289dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="You will be reminded at->"
         android:inputType="time"
-        android:textAlignment="center"/>
+        android:maxLength="10"
+        android:textAlignment="center" />
+
+    <ImageView
+        android:id="@+id/ivTaskImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/btnCaptureImage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="-340dp"
+        android:layout_marginBottom="200dp"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <Button
+        android:id="@+id/btnCaptureImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etTime"
+        android:layout_alignParentBottom="false"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="101dp"
+        android:layout_marginBottom="365dp"
+        android:text="Add a Picture" />
 
 </RelativeLayout>
