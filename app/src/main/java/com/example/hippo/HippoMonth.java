@@ -15,6 +15,7 @@ public class HippoMonth {
     private final static String TAG = "HippoMonth";
 
     public static final int DECEMBER = 12;
+    public static final int JANUARY = 1;
 
 
     private String name;

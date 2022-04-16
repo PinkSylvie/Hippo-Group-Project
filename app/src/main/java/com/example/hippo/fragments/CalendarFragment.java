@@ -1,5 +1,6 @@
 package com.example.hippo.fragments;
 
+import android.nfc.Tag;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -7,7 +8,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SnapHelper;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.util.Log;
@@ -104,9 +107,15 @@ public class CalendarFragment extends Fragment {
 
         rvMonths.setLayoutManager(layoutManager);
 
+
+        SnapHelper helper = new LinearSnapHelper();
+        helper.attachToRecyclerView(rvMonths);
+
         Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
 
-        setCalendarToMonth(calendar.get(Calendar.MONTH), calendar.get(Calendar.YEAR));
+        Log.i(TAG, calendar.getTime().toString());
+
+        setCalendarToMonth(calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.YEAR));
 
         scrollListener = new EndlessRecyclerViewScrollListener(layoutManager) {
             @Override
@@ -133,6 +142,20 @@ public class CalendarFragment extends Fragment {
         }
         months.add(new HippoMonth(month + 1, year));
         adapter.notifyDataSetChanged();
+    }
+
+    protected void addMonthToTheLeftOfCalendar(){
+        int year = months.get(months.size()-1).getYear();
+        int month = months.get(months.size()-1).getMonthNumber();
+
+        if(month == HippoMonth.JANUARY){
+            year--;
+            month = 12;
+        }
+
+        months.add(0, new HippoMonth(month - 1, year));
+        adapter.notifyDataSetChanged();
+
     }
 
 
