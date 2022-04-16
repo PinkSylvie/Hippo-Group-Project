@@ -15,6 +15,7 @@ public class Task extends ParseObject {
     public static final String KEY_DUE_TIME = "dueTime";
     public static final String KEY_ATTACHMENT = "Attachment";
     public static final String KEY_USER = "User";
+    public static final String KEY_IMAGE = "image";
     public static final String KEY_COMPLETED = "isDone";
     public static final String KEY_REMINDER_TIME = "reminderTime";
     public static final String KEY_CREATED_TIME = "createdAt";
@@ -52,39 +53,41 @@ public class Task extends ParseObject {
 
     // Getters
 
-    String getTitle(){
+    public String getTitle(){
         return getString(KEY_TITLE);
     }
 
-    String getDescription(){
+    public String getDescription(){
         return getString(KEY_DESCRIPTION);
     }
 
-    Date getDueTime(){
+    public Date getDueTime(){
         return getDate(KEY_DUE_TIME);
     }
 
-    ParseFile getAttachment(){
+    public ParseFile getAttachment(){
         return getParseFile(KEY_ATTACHMENT);
     }
 
-    ParseUser getUser(){
+    public ParseUser getUser(){
         return getParseUser(KEY_USER);
     }
+
+    public ParseFile getImage(){ return getParseFile(KEY_IMAGE); }
 
     boolean isDone(){
         return getBoolean(KEY_COMPLETED);
     }
 
-    Date getReminder(){
+    public Date getReminder(){
         return getDate(KEY_REMINDER_TIME);
     }
 
-    Date getCreationDate(){
+    public Date getCreationDate(){
         return getDate(KEY_CREATED_TIME);
     }
 
-    Date getUpdatedDate(){
+    public Date getUpdatedDate(){
         return getDate(KEY_UPDATED_TIME);
     }
 

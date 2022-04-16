@@ -243,7 +243,7 @@ public class ComposeFragment extends Fragment {
                     Log.e(TAG, "error while saving", e);
                     Toast.makeText(getContext(),"Error while Saving", Toast.LENGTH_SHORT).show();
                 }
-                Log.i(TAG, "task was succesfully saved");
+                Log.i(TAG, "task was successfully saved");
                 etDate.setText("");
                 etTaskDescription.setText("");
                 etTime.setText("");
