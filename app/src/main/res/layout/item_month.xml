@@ -11,16 +11,34 @@
         android:id="@+id/tvMonth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginLeft="121dp"
         android:layout_marginTop="0dp"
         android:fontFamily="monospace"
-        android:text="March 2022"
+        android:text="March"
         android:textColor="@color/minimal"
-        android:textSize="34sp"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/tvMonth"
+        android:fontFamily="monospace"
+        android:text="2022"
+        android:textColor="@color/minimal"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
     <TableLayout
+        android:id="@+id/tlMonth"
+        android:background="@drawable/back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvMonth"
@@ -41,7 +59,7 @@
                 android:fontFamily="monospace"
                 android:text="S"
                 android:textAlignment="center"
-                android:textColor="@color/minimal"
+                android:textColor="@color/teal_700"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -442,6 +460,80 @@
                 android:textColor="@color/minimal"
                 android:textSize="16sp" />
 
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="monospace"
+                android:text="27"
+                android:textAlignment="center"
+                android:textColor="@color/minimal"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="monospace"
+                android:text="28"
+                android:textAlignment="center"
+                android:textColor="@color/minimal"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="monospace"
+                android:text="29"
+                android:textAlignment="center"
+                android:textColor="@color/minimal"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="monospace"
+                android:text="30"
+                android:textAlignment="center"
+                android:textColor="@color/minimal"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="monospace"
+                android:text="31"
+                android:textAlignment="center"
+                android:textColor="@color/minimal"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="monospace"
+                android:textAlignment="center"
+                android:textColor="@color/minimal"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="monospace"
+                android:textAlignment="center"
+                android:textColor="@color/minimal"
+                android:textSize="16sp" />
         </TableRow>
 
         <TableRow

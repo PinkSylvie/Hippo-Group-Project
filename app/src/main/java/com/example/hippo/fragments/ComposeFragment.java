@@ -44,8 +44,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class composeFragment extends Fragment {
-    public static final String TAG = "composeFragment";
+public class ComposeFragment extends Fragment {
+    public static final String TAG = "ComposeFragment";
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
     DatePickerDialog datePicker;
     TimePickerDialog timePicker;
@@ -63,7 +63,7 @@ public class composeFragment extends Fragment {
     public String photoFileName = "photo.jpg";
     private  String amPm;
 
-    public composeFragment(){}
+    public ComposeFragment(){}
 
     @Nullable
     @Override

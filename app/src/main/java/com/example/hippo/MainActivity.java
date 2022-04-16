@@ -9,10 +9,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.example.hippo.fragments.calendarFragment;
-import com.example.hippo.fragments.composeFragment;
-import com.example.hippo.fragments.profileFragment;
-import com.example.hippo.fragments.taskFragment;
+import com.example.hippo.fragments.CalendarFragment;
+import com.example.hippo.fragments.ComposeFragment;
+import com.example.hippo.fragments.ProfileFragment;
+import com.example.hippo.fragments.TaskFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -33,16 +33,16 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment;
                 switch (item.getItemId()){
                     case R.id.action_tasks:
-                        fragment = new taskFragment();
+                        fragment = new TaskFragment();
                         break;
                     case R.id.action_compose:
-                        fragment = new composeFragment();
+                        fragment = new ComposeFragment();
                         break;
                     case R.id.action_calendar:
-                        fragment = new calendarFragment();
+                        fragment = new CalendarFragment();
                         break;
                     case R.id.action_profile:
-                        fragment = new profileFragment();
+                        fragment = new ProfileFragment();
                         break;
                     default:
                         throw new IllegalStateException("Unexpected value: " + item.getItemId());
@@ -54,5 +54,4 @@ public class MainActivity extends AppCompatActivity {
         });
         bottomNavigationView.setSelectedItemId(R.id.action_tasks);
     }
-
 }

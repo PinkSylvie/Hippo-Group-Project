@@ -6,7 +6,7 @@
     android:id="@+id/Task"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    tools:context=".fragments.composeFragment">
+    tools:context=".fragments.ComposeFragment">
 
     <EditText
         android:id="@+id/etTaskDescription"
