@@ -31,6 +31,9 @@ Our app is an organization app that helps the user to organize what they need to
 - [X] Setup Backend for User purposes
 - [X] Setup User Login
 - [X] Setup User Signin
+- [X] Setup Task Compose
+- [X] Setup Task View
+- [X] Start Calendar View
 
 **Required Must-have Stories**
 
@@ -49,6 +52,14 @@ Our app is an organization app that helps the user to organize what they need to
 Here's a walkthrough of implemented user stories:
 
 <img src='https://github.com/PinkSylvie/EDM-Group-Project/blob/main/Hippo%201st%20Sprint.gif' width='' alt='1st Sprint Walkthrough' />
+
+**2nd Sprint GIF**
+
+Here's a walkthrough of implemented user stories:
+
+<img src='https://github.com/PinkSylvie/EDM-Group-Project/blob/main/Hippo%202nd%20Sprint.gif' width='' alt='2nd Sprint Walkthrough' />
+
+
 
 ### 2. Screen Archetypesm
 
