@@ -1,8 +1,6 @@
 package com.example.hippo;
 
 import android.content.Context;
-import android.icu.text.DateFormat;
-import android.icu.text.SimpleDateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
