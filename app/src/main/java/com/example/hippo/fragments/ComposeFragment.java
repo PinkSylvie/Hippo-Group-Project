@@ -159,7 +159,6 @@ public class ComposeFragment extends Fragment {
                     e.printStackTrace();
                 }
 
-
                 //System.out.println(dueTime);
                 System.out.println(reminderTime);
                 if (Title.isEmpty()) {
