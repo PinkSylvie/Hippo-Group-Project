@@ -1,15 +1,26 @@
 package com.example.hippo;
 
+import android.os.Parcelable;
+
+import androidx.versionedparcelable.VersionedParcelize;
+
 import com.parse.Parse;
 import com.parse.ParseClassName;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
-import java.util.Date;
+import org.parceler.Parcel;
+import org.parceler.ParcelConverter;
+import org.parceler.ParcelPropertyConverter;
+import org.parceler.Parcels;
 
+import java.util.Date;
+import java.util.List;
+
+@VersionedParcelize
 @ParseClassName("Task")
-public class Task extends ParseObject {
+public class Task extends ParseObject implements Parcelable {
     public static final String KEY_TITLE = "Title";
     public static final String KEY_DESCRIPTION = "Description";
     public static final String KEY_DUE_TIME = "dueTime";
@@ -20,6 +31,13 @@ public class Task extends ParseObject {
     public static final String KEY_REMINDER_TIME = "reminderTime";
     public static final String KEY_CREATED_TIME = "createdAt";
     public static final String KEY_UPDATED_TIME = "updatedAt";
+
+    // Empty Constructor Added to use Parceler
+    public Task(){}
+
+    // Parceler Converter
+
+
 
     //Setters
 
@@ -92,3 +110,6 @@ public class Task extends ParseObject {
     }
 
 }
+
+
+
