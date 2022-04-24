@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:background="@color/minimal">
+
+    <CheckBox
+        android:id="@+id/cb_task_check"
+        style="@android:style/Widget.CompoundButton.CheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:buttonTint="@color/white"
+        android:scaleX="1"
+        android:scaleY="1"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_task_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:textAlignment="textStart"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cb_task_check"
+        app:layout_constraintTop_toTopOf="@+id/cb_task_check"
+        tools:text="Do the spanish homework " />
+
+    <TextView
+        android:id="@+id/tv_task_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="monospace"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/cb_task_check"
+        app:layout_constraintTop_toBottomOf="@+id/tv_task_title"
+        tools:text="2022-12-31" />
+
+    <TextView
+        android:id="@+id/tv_task_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="monospace"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/iv_task_calendar"
+        app:layout_constraintTop_toBottomOf="@+id/tv_task_title"
+        tools:text="2022-12-31" />
+
+    <ImageView
+        android:id="@+id/iv_task_calendar"
+        android:layout_width="21dp"
+        android:layout_height="17dp"
+        app:tint="@color/white"
+        android:layout_marginStart="4dp"
+        app:layout_constraintStart_toEndOf="@+id/tv_task_date"
+        app:layout_constraintTop_toTopOf="@+id/tv_task_date"
+        app:srcCompat="@drawable/ic_calendar" />
+
+    <ImageView
+        android:id="@+id/iv_task_clock"
+        android:layout_width="21dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="4dp"
+        app:layout_constraintStart_toEndOf="@+id/tv_task_time"
+        app:layout_constraintTop_toTopOf="@+id/tv_task_time"
+        app:srcCompat="@android:drawable/ic_lock_idle_alarm"
+        app:tint="@color/white" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

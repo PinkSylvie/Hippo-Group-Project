@@ -1,126 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
     android:id="@+id/Task"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".fragments.ComposeFragment">
-
-
-    <EditText
-        android:id="@+id/etTitle"
-        android:layout_width="232dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="4dp"
-        android:height="48dp"
-        android:elegantTextHeight="false"
-        android:ems="10"
-        android:gravity="center_horizontal"
-        android:hint="Title For task"
-        android:inputType="textPersonName"
-        app:layout_constrainedHeight="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etTaskDescription"
-        android:layout_width="316dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="374dp"
+        android:layout_height="63dp"
+        android:layout_below="@+id/etTitle"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="17dp"
         android:ems="10"
-        android:gravity="center_horizontal"
-        android:hint="What do you wanna do?"
+        android:hint="What do you want to do?"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etTitle" />
+        android:textAlignment="center" />
 
     <EditText
         android:id="@+id/etDate"
-        android:layout_width="185dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="4dp"
-        android:drawableEnd="@android:drawable/ic_menu_my_calendar"
+        android:layout_width="155dp"
+        android:layout_height="73dp"
+        android:layout_below="@+id/etTaskDescription"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="-13dp"
+        android:height="48dp"
+        android:drawableRight="@android:drawable/ic_menu_my_calendar"
         android:ems="10"
-        android:gravity="center_horizontal"
-        android:hint="At which date?"
+        android:hint="at which date?"
         android:inputType="date"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etTaskDescription" />
+        android:maxLength="10" />
 
     <EditText
         android:id="@+id/etTime"
-        android:layout_width="166dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="215dp"
+        android:layout_height="71dp"
+        android:layout_below="@+id/etTaskDescription"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="-11dp"
+        android:layout_marginEnd="22dp"
+        android:layout_toEndOf="@+id/etDate"
+        android:height="48dp"
         android:drawableEnd="@android:drawable/ic_lock_idle_alarm"
         android:ems="10"
-        android:gravity="center_horizontal"
         android:hint="At what time?"
         android:inputType="time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.369"
-        app:layout_constraintStart_toEndOf="@+id/etDate"
-        app:layout_constraintTop_toBottomOf="@+id/etTaskDescription" />
-
-    <EditText
-        android:id="@+id/etReminderTime"
-        android:layout_width="211dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:gravity="center_horizontal"
-        android:hint="You will be reminded at:"
-        android:inputType="time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etDate" />
-
-    <Button
-        android:id="@+id/btnCaptureImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Add a Picture"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etReminderTime" />
-
-    <ImageView
-        android:id="@+id/ivTaskImage"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCaptureImage"
-        tools:src="@tools:sample/backgrounds/scenic" />
+        android:maxLength="8" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_below="@+id/etTime"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="341dp"
+        android:layout_toEndOf="@+id/etDate"
         android:clickable="true"
-        android:contentDescription="addbutton"
-        android:contextClickable="true"
-        android:src="@android:drawable/ic_menu_add"
-        app:backgroundTint="#4B4848"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivTaskImage"
-        app:rippleColor="#544A4A" />
+        app:backgroundTint="#564F4F"
+        app:srcCompat="@android:drawable/ic_menu_add" />
 
+    <EditText
+        android:id="@+id/etTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="102dp"
+        android:layout_marginTop="27dp"
+        android:ems="10"
+        android:hint="Title for task"
+        android:inputType="textPersonName"
+        android:textAlignment="center" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/etReminderTime"
+        android:layout_width="265dp"
+        android:layout_height="81dp"
+        android:layout_below="@+id/etDate"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="You will be reminded at->"
+        android:inputType="time"
+        android:maxLength="10"
+        android:textAlignment="center" />
+
+    <ImageView
+        android:id="@+id/ivTaskImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/btnCaptureImage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="-340dp"
+        android:layout_marginBottom="200dp"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <Button
+        android:id="@+id/btnCaptureImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etTime"
+        android:layout_alignParentBottom="false"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="101dp"
+        android:layout_marginBottom="365dp"
+        android:text="Add a Picture" />
+
+</RelativeLayout>

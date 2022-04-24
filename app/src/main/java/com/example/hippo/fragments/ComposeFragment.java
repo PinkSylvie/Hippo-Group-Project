@@ -234,7 +234,7 @@ public class ComposeFragment extends Fragment {
         task.setDueTime(dueTime);
         task.setTitle(title);
         task.setReminder(reminderTime);
-//        task.setAttachment(new ParseFile(photoFile));
+        task.setAttachment(new ParseFile(photoFile));
         task.saveInBackground(new SaveCallback() {
             @Override
             public void done(com.parse.ParseException e) {

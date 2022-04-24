@@ -15,6 +15,8 @@ import org.parceler.ParcelConverter;
 import org.parceler.ParcelPropertyConverter;
 import org.parceler.Parcels;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -31,6 +33,9 @@ public class Task extends ParseObject implements Parcelable {
     public static final String KEY_REMINDER_TIME = "reminderTime";
     public static final String KEY_CREATED_TIME = "createdAt";
     public static final String KEY_UPDATED_TIME = "updatedAt";
+
+    public static final String DATE_FORMAT = "MM/dd/yyyy";
+    public static final String TIME_FORMAT = "HH:mm";
 
     // Empty Constructor Added to use Parceler
     public Task(){}
@@ -108,6 +113,23 @@ public class Task extends ParseObject implements Parcelable {
     public Date getUpdatedDate(){
         return getDate(KEY_UPDATED_TIME);
     }
+
+
+    //Methods
+
+    public String getDueDateStr(){
+        DateFormat df = new SimpleDateFormat(DATE_FORMAT);
+        String dueDateAsString = df.format(getDueTime());
+        return dueDateAsString;
+    }
+
+    public String getDueTimeStr(){
+        DateFormat df = new SimpleDateFormat(TIME_FORMAT);
+        String dueTimeAsString = df.format(getDueTime());
+        return dueTimeAsString;
+    }
+
+
 
 }
 

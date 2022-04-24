@@ -32,7 +32,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_post, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_task, parent, false);
         return new ViewHolder(view);
     }
 
@@ -63,37 +63,31 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ViewHolder> 
 
         ConstraintLayout container;
         private TextView tvTitle;
-        private ImageView ivImage;
-        private TextView tvDuetime;
-        private TextView tvDescription;
+        private TextView tvDueTime;
+        private TextView tvDueDate;
         private CheckBox cbDone;
 
 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvTitle = itemView.findViewById(R.id.tvTitle);
-            ivImage = itemView.findViewById(R.id.ivImage);
-            tvDescription = itemView.findViewById(R.id.tvDescription);
-            tvDuetime = itemView.findViewById(R.id.tvDuetime);
-            cbDone = itemView.findViewById(R.id.cbDone);
+            tvTitle = itemView.findViewById(R.id.tv_task_title);
+            tvDueDate = itemView.findViewById(R.id.tv_task_date);
+            tvDueTime = itemView.findViewById(R.id.tv_task_time);
+            cbDone = itemView.findViewById(R.id.cb_task_check);
         }
 
         public void bind(Task task) {
             tvTitle.setText(task.getTitle());
-            tvDuetime.setText("Due date: "+ task.getDueTime().toString());
-            tvDescription.setText(task.getDescription());
-            ParseFile image = task.getAttachment();
-            if (image != null){
-                Glide.with(context).load(task.getAttachment().getUrl()).into(ivImage);
-            }
+            tvDueDate.setText(task.getDueDateStr());
+            tvDueTime.setText(task.getDueTimeStr());
             tvTitle.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(context, DetailActivity.class);
                     i.putExtra("title", task.getTitle());
                     i.putExtra("description", task.getDescription());
-                    i.putExtra("duetime", "Due date: "+ task.getDueTime().toString());
+                    i.putExtra("duetime", "Due date: "+ task.getDueTime());
 //                    i.putExtra("image", task.getAttachment());
 
                     context.startActivity(i);
