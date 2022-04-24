@@ -1,8 +1,7 @@
 package com.example.hippo;
 
 import android.content.Context;
-import android.icu.text.DateFormat;
-import android.icu.text.SimpleDateFormat;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +10,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.parse.ParseFile;
+
 
 import java.util.List;
 
@@ -60,11 +61,14 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ViewHolder> 
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
+        ConstraintLayout container;
         private TextView tvTitle;
         private ImageView ivImage;
         private TextView tvDuetime;
         private TextView tvDescription;
         private CheckBox cbDone;
+
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -79,10 +83,23 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ViewHolder> 
             tvTitle.setText(task.getTitle());
             tvDuetime.setText("Due date: "+ task.getDueTime().toString());
             tvDescription.setText(task.getDescription());
-            ParseFile image = task.getImage();
+            ParseFile image = task.getAttachment();
             if (image != null){
-                Glide.with(context).load(task.getImage().getUrl()).into(ivImage);
+                Glide.with(context).load(task.getAttachment().getUrl()).into(ivImage);
             }
+            tvTitle.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(context, DetailActivity.class);
+                    i.putExtra("title", task.getTitle());
+                    i.putExtra("description", task.getDescription());
+                    i.putExtra("duetime", "Due date: "+ task.getDueTime().toString());
+//                    i.putExtra("image", task.getAttachment());
+
+                    context.startActivity(i);
+
+                }
+            });
 
         }
     }
