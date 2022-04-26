@@ -62,6 +62,13 @@ Here's a walkthrough of implemented user stories:
 <img src='https://github.com/PinkSylvie/EDM-Group-Project/blob/main/Hippo%202nd%20Sprint.gif' width='' alt='2nd Sprint Walkthrough' />
 
 
+**3rd Sprint GIF**
+
+Here's a walkthrough of implemented user stories:
+
+<img src='https://github.com/PinkSylvie/EDM-Group-Project/blob/main/Hippo%203rd%20Sprint.gif' width='' alt='3rd Sprint Walkthrough' />
+
+
 
 ### 2. Screen Archetypesm
 
