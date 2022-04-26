@@ -23,6 +23,7 @@ public class DetailActivity extends AppCompatActivity {
     TextView tvTitle;
     TextView tvDescription;
     TextView tvDuetime;
+    TextView tvReminder;
     ImageView ivImage;
     Context context;
 
@@ -36,10 +37,12 @@ public class DetailActivity extends AppCompatActivity {
 //        ivImage = findViewById(R.id.ivImage);
         tvDescription = findViewById(R.id.tvDescription);
         tvDuetime = findViewById(R.id.tvDuetime);
+        tvReminder = findViewById(R.id.tvReminder);
 
         String title = getIntent().getStringExtra("title");
         String duetime = getIntent().getStringExtra("duetime");
         String description = getIntent().getStringExtra("description");
+        String reminder = getIntent().getStringExtra("reminder");
 //
 //        Bundle bundle = getIntent().getExtras();
 //        if(bundle!= null){
@@ -51,6 +54,7 @@ public class DetailActivity extends AppCompatActivity {
         tvTitle.setText(title);
         tvDuetime.setText(duetime);
         tvDescription.setText(description);
+        tvReminder.setText(reminder);
 
 
     }

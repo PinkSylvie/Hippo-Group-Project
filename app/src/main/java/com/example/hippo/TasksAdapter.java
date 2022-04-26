@@ -88,6 +88,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ViewHolder> 
                     i.putExtra("title", task.getTitle());
                     i.putExtra("description", task.getDescription());
                     i.putExtra("duetime", "Due date: "+ task.getDueTime());
+                    i.putExtra("reminder", "Reminder: " + task.getReminder());
 //                    i.putExtra("image", task.getAttachment());
 
                     context.startActivity(i);

@@ -60,6 +60,8 @@ public class ComposeFragment extends Fragment implements AdapterView.OnItemSelec
     public static final String[] REMINDERS = new String[]{"Never", "10 minutes before", "30 minutes before", "1 hour before",
             "2 hours before", "1 day before", "2 days before", "1 week before", "2 weeks before", "1 month before"};
 
+    private int reminderSelection = 0;
+
 
     DatePickerDialog datePicker;
     TimePickerDialog timePicker;
@@ -128,6 +130,7 @@ public class ComposeFragment extends Fragment implements AdapterView.OnItemSelec
             task.setTitle(title);
             task.setDescription(etTaskDescription.getText().toString());
             task.setDueTime(dueDate.getTime());
+            task.setReminder(setReminder().getTime());
             task.setCompletion(false);
 
             task.saveInBackground(new SaveCallback() {
@@ -194,9 +197,44 @@ public class ComposeFragment extends Fragment implements AdapterView.OnItemSelec
         }
     };
 
+    private Calendar setReminder(){
+        Calendar reminder = (Calendar) dueDate.clone();
+        switch (reminderSelection){
+            case 1:
+                reminder.add(Calendar.MINUTE, -10);
+                return reminder;
+            case 2:
+                reminder.add(Calendar.MINUTE, -30);
+                return reminder;
+            case 3:
+                reminder.add(Calendar.HOUR_OF_DAY, -1);
+                return reminder;
+            case 4:
+                reminder.add(Calendar.HOUR_OF_DAY, -2);
+                return reminder;
+            case 5:
+                reminder.add(Calendar.DAY_OF_MONTH, -1);
+                return reminder;
+            case 6:
+                reminder.add(Calendar.DAY_OF_MONTH, -2);
+                return reminder;
+            case 7:
+                reminder.add(Calendar.WEEK_OF_MONTH, -1);
+                return reminder;
+            case 8:
+                reminder.add(Calendar.WEEK_OF_MONTH, -2);
+                return reminder;
+            case 9:
+                reminder.add(Calendar.MONTH, -1);
+                return reminder;
+            default:
+                return reminder;
+        }
+    }
+
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        String text = adapterView.getItemAtPosition(i).toString();
+        reminderSelection = i;
     }
 
     @Override

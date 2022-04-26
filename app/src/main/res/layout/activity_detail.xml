@@ -27,6 +27,15 @@
         tools:text="DueTime" />
 
     <TextView
+        android:id="@+id/tvReminder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        tools:text="Reminder" />
+
+    <TextView
         android:id="@+id/tvDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
