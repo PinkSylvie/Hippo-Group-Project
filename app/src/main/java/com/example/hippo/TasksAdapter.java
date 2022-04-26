@@ -80,7 +80,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ViewHolder> 
         public void bind(Task task) {
             tvTitle.setText(task.getTitle());
             tvDueDate.setText(task.getDueDateStr());
-            tvDueTime.setText(task.getDueTimeStr());
+            tvDueTime.setText(task.getDueTime12HourStr());
             tvTitle.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -127,8 +127,6 @@ public class ComposeFragment extends Fragment implements AdapterView.OnItemSelec
             task.setUser(user);
             task.setTitle(title);
             task.setDescription(etTaskDescription.getText().toString());
-            Log.i(TAG, "dueDate is: " + dueDate.toString());
-            Log.i(TAG, "Date from dueDate is: " + dueDate.getTime().toString());
             task.setDueTime(dueDate.getTime());
             task.setCompletion(false);
 
@@ -136,10 +134,10 @@ public class ComposeFragment extends Fragment implements AdapterView.OnItemSelec
                 @Override
                 public void done(com.parse.ParseException e) {
                     if(e!=null) {
-                        Log.e(TAG, "error while saving", e);
-                        Toast.makeText(getContext(),"Error while Saving", Toast.LENGTH_SHORT).show();
+                        Log.e(TAG, "Error while saving", e);
+                        Toast.makeText(getContext(),"Error while saving", Toast.LENGTH_SHORT).show();
                     }
-                    Log.i(TAG, "task was successfully saved");
+                    Log.i(TAG, "Task was successfully saved");
                     MainActivity.fragmentManager.beginTransaction().replace(R.id.flContainer, new TaskFragment()).commit();
                 }
             });

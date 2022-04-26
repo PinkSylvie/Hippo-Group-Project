@@ -35,6 +35,7 @@ public class Task extends ParseObject implements Parcelable {
 
     public static final String DATE_FORMAT = "MM/dd/yyyy";
     public static final String TIME_FORMAT = "HH:mm";
+    public static final String TIME_FORMAT_12HOUR = "hh:mm a";
 
     // Empty Constructor Added to use Parceler
     public Task(){}
@@ -122,6 +123,12 @@ public class Task extends ParseObject implements Parcelable {
 
     public String getDueTimeStr(){
         DateFormat df = new SimpleDateFormat(TIME_FORMAT);
+        String dueTimeAsString = df.format(getDueTime());
+        return dueTimeAsString;
+    }
+
+    public String getDueTime12HourStr(){
+        DateFormat df = new SimpleDateFormat(TIME_FORMAT_12HOUR);
         String dueTimeAsString = df.format(getDueTime());
         return dueTimeAsString;
     }
