@@ -34,6 +34,8 @@ Our app is an organization app that helps the user to organize what they need to
 - [X] Setup Task Compose
 - [X] Setup Task View
 - [X] Start Calendar View
+- [X] Added Detail View
+- [X] Setup User Logout
 
 **Required Must-have Stories**
 
