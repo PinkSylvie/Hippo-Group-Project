@@ -158,7 +158,7 @@ public class ComposeFragment extends Fragment implements AdapterView.OnItemSelec
                 @Override
                 public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                     dueDate.set(Calendar.YEAR, year);
-                    dueDate.set(Calendar.MONTH, monthOfYear + 1);
+                    dueDate.set(Calendar.MONTH, monthOfYear);
                     dueDate.set(Calendar.DATE, dayOfMonth);
                     etDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
                 }
@@ -184,7 +184,7 @@ public class ComposeFragment extends Fragment implements AdapterView.OnItemSelec
                     try {
                         Date time24 = time24HourFormat.parse(time24Hour);
                         etTime.setText(time12HourFormat.format(time24));
-                        dueDate.set(Calendar.HOUR, pHour);
+                        dueDate.set(Calendar.HOUR_OF_DAY, pHour);
                         dueDate.set(Calendar.MINUTE, pMinute);
                         dueDate.set(Calendar.SECOND, 0);
                     } catch (ParseException e) {
