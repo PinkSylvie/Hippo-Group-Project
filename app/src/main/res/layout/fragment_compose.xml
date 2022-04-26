@@ -60,7 +60,8 @@
         android:textColorHint="@color/minimal"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/etCompose_task_description"
-        app:layout_constraintTop_toBottomOf="@+id/etCompose_task_description" />
+        app:layout_constraintTop_toBottomOf="@+id/etCompose_task_description"
+        />
 
     <EditText
         android:id="@+id/etCompose_task_time"

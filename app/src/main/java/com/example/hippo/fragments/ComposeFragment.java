@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.InputType;
 import android.util.EventLogTags;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,6 +33,7 @@ import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
+import com.example.hippo.MainActivity;
 import com.example.hippo.R;
 import com.example.hippo.HippoUser;
 import com.example.hippo.Task;
@@ -52,12 +54,16 @@ import kotlin.jvm.internal.CollectionToArray;
 public class ComposeFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     public static final String TAG = "ComposeFragment";
 
-    public static final String[] reminders = new String[]{"Never", "10 minutes before", "30 minutes before", "1 hour before",
+    public static final String TIME12HOUR = "hh:mm a";
+    public static final String TIME24HOUR = "HH:mm";
+
+    public static final String[] REMINDERS = new String[]{"Never", "10 minutes before", "30 minutes before", "1 hour before",
             "2 hours before", "1 day before", "2 days before", "1 week before", "2 weeks before", "1 month before"};
 
-    public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
+
     DatePickerDialog datePicker;
     TimePickerDialog timePicker;
+
     private EditText etTaskDescription;
     private EditText etTitle;
     private EditText etDate;
@@ -68,6 +74,8 @@ public class ComposeFragment extends Fragment implements AdapterView.OnItemSelec
     private ArrayAdapter<String> spinAdapter;
 
     private Button btnAdd;
+
+    private Calendar dueDate;
 
     public ComposeFragment() {
     }
@@ -88,118 +96,105 @@ public class ComposeFragment extends Fragment implements AdapterView.OnItemSelec
         btnAdd = view.findViewById(R.id.btnCompose_task_create);
         spinReminder = view.findViewById(R.id.spinCompose_task_reminder);
 
-        spinAdapter = new ArrayAdapter<>(getContext(), R.layout.hippo_spinner_item, reminders);
+        etDate.setInputType(InputType.TYPE_NULL);
+        etTime.setInputType(InputType.TYPE_NULL);
+
+        spinAdapter = new ArrayAdapter<>(getContext(), R.layout.hippo_spinner_item, REMINDERS);
         spinReminder.setAdapter(spinAdapter);
         spinReminder.setOnItemSelectedListener(this);
 
-        etDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final Calendar cldr = Calendar.getInstance();
-                int day = cldr.get(Calendar.DAY_OF_MONTH);
-                int month = cldr.get(Calendar.MONTH);
-                int year = cldr.get(Calendar.YEAR);
+        etDate.setOnClickListener(selectDate);
+        etTime.setOnClickListener(selectTime);
 
+        dueDate = Calendar.getInstance();
 
-                datePicker = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        etDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-                    }
-                }, year, month, day);
-                datePicker.show();
-            }
-        });
-
-        etTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final Calendar cldr = Calendar.getInstance();
-                int hour = cldr.get(Calendar.HOUR_OF_DAY);
-                int minutes = cldr.get(Calendar.MINUTE);
-                timePicker = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker timePicker, int pHour, int pMinute) {
-                        if (pHour >= 12) {
-                            //  amPm = "PM";
-                        } else {
-                            // amPm = "AM";
-                        }
-                        //etTime.setText(pHour + ":" + pMinute + " " + amPm);
-                        // etReminderTime.setText(pHour-2+":"+pMinute+ amPm);
-                    }
-                }, hour, minutes, false);
-                timePicker.show();
-            }
-        });
-
-/*        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ParseUser currentUser = HippoUser.getCurrentUser();
-                String Title = etTitle.getText().toString();
-                String Description = etTaskDescription.getText().toString();
-                String Date = etDate.getText().toString();
-                String Time = etTime.getText().toString();
-              //  String Reminder = etReminderTime.getText().toString();
-                SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy hh:mm");
-
-
-                Date reminderTime= null;
-                Date dueTime = null;
-                try {
-                    dueTime = formatDate.parse(Date + " " + Time);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-
-                try {
-                    reminderTime = formatDate.parse(Date + " " + Reminder);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-
-                //System.out.println(dueTime);
-                System.out.println(reminderTime);
-                if (Title.isEmpty()) {
-                    Toast.makeText(getContext(), "Title can not be empty", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (Description.isEmpty()) {
-                    Toast.makeText(getContext(), "Description can not be empty", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                SaveTask(currentUser,Title, Description, dueTime, reminderTime);
-            }
-        });
+        btnAdd.setOnClickListener(saveTask);
     }
-    private void SaveTask(ParseUser currentUser, String title, String description, Date dueTime, Date reminderTime) {
-        Task task = new Task();
-        task.put(Task.KEY_USER,currentUser);
-        task.setCompletion(false);
-        task.setDescription(description);
-        task.setDueTime(dueTime);
-        task.setTitle(title);
-        task.setReminder(reminderTime);
-       // task.setAttachment(new ParseFile(photoFile));
-        task.saveInBackground(new SaveCallback() {
-            @Override
-            public void done(com.parse.ParseException e) {
-                if(e!=null) {
-                    Log.e(TAG, "error while saving", e);
-                    Toast.makeText(getContext(),"Error while Saving", Toast.LENGTH_SHORT).show();
-                }
-                Log.i(TAG, "task was successfully saved");
-                etDate.setText("");
-                etTaskDescription.setText("");
-                etTime.setText("");
-                etTitle.setText("");
-                etReminderTime.setText("");
-                ivTaskImage.setImageResource(0);
+
+
+    View.OnClickListener saveTask = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            String title = etTitle.getText().toString();
+            if(title.isEmpty()){
+                Toast.makeText(getContext(), "Task must have a title", Toast.LENGTH_SHORT).show();
+                return;
             }
-        });
-    }*/
-    }
+
+            Task task = new Task();
+
+            ParseUser user = HippoUser.getCurrentUser();
+            task.setUser(user);
+            task.setTitle(title);
+            task.setDescription(etTaskDescription.getText().toString());
+            Log.i(TAG, "dueDate is: " + dueDate.toString());
+            Log.i(TAG, "Date from dueDate is: " + dueDate.getTime().toString());
+            task.setDueTime(dueDate.getTime());
+            task.setCompletion(false);
+
+            task.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(com.parse.ParseException e) {
+                    if(e!=null) {
+                        Log.e(TAG, "error while saving", e);
+                        Toast.makeText(getContext(),"Error while Saving", Toast.LENGTH_SHORT).show();
+                    }
+                    Log.i(TAG, "task was successfully saved");
+                    MainActivity.fragmentManager.beginTransaction().replace(R.id.flContainer, new TaskFragment()).commit();
+                }
+            });
+
+        }
+    };
+
+    View.OnClickListener selectDate = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            final Calendar cldr = Calendar.getInstance();
+            int day = cldr.get(Calendar.DAY_OF_MONTH);
+            int month = cldr.get(Calendar.MONTH);
+            int year = cldr.get(Calendar.YEAR);
+            datePicker = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                    dueDate.set(Calendar.YEAR, year);
+                    dueDate.set(Calendar.MONTH, monthOfYear + 1);
+                    dueDate.set(Calendar.DATE, dayOfMonth);
+                    etDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                }
+            }, year, month, day);
+            datePicker.show();
+        }
+    };
+
+    View.OnClickListener selectTime = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            final Calendar cldr = Calendar.getInstance();
+            int hour = cldr.get(Calendar.HOUR_OF_DAY);
+            int minutes = cldr.get(Calendar.MINUTE);
+            timePicker = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
+                @Override
+                public void onTimeSet(TimePicker timePicker, int pHour, int pMinute) {
+                    String time24Hour = String.valueOf(pHour) + ":" + String.valueOf(pMinute);
+
+                    SimpleDateFormat time12HourFormat = new SimpleDateFormat(TIME12HOUR);
+                    SimpleDateFormat time24HourFormat = new SimpleDateFormat(TIME24HOUR);
+
+                    try {
+                        Date time24 = time24HourFormat.parse(time24Hour);
+                        etTime.setText(time12HourFormat.format(time24));
+                        dueDate.set(Calendar.HOUR, pHour);
+                        dueDate.set(Calendar.MINUTE, pMinute);
+                        dueDate.set(Calendar.SECOND, 0);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, hour, minutes, false);
+            timePicker.show();
+        }
+    };
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {

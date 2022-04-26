@@ -23,12 +23,11 @@ import java.util.List;
 @VersionedParcelize
 @ParseClassName("Task")
 public class Task extends ParseObject implements Parcelable {
-    public static final String KEY_TITLE = "Title";
-    public static final String KEY_DESCRIPTION = "Description";
+    public static final String KEY_TITLE = "title";
+    public static final String KEY_DESCRIPTION = "description";
     public static final String KEY_DUE_TIME = "dueTime";
-    public static final String KEY_ATTACHMENT = "Attachment";
+    public static final String KEY_ATTACHMENT = "attachment";
     public static final String KEY_USER = "User";
-    public static final String KEY_IMAGE = "image";
     public static final String KEY_COMPLETED = "isDone";
     public static final String KEY_REMINDER_TIME = "reminderTime";
     public static final String KEY_CREATED_TIME = "createdAt";
@@ -62,7 +61,7 @@ public class Task extends ParseObject implements Parcelable {
         put(KEY_ATTACHMENT, file);
     }
 
-    public void setUser(HippoUser user){
+    public void setUser(ParseUser user){
         put(KEY_USER, user);
     }
 
@@ -95,8 +94,6 @@ public class Task extends ParseObject implements Parcelable {
     public ParseUser getUser(){
         return getParseUser(KEY_USER);
     }
-
-    public ParseFile getImage(){ return getParseFile(KEY_IMAGE); }
 
     boolean isDone(){
         return getBoolean(KEY_COMPLETED);
