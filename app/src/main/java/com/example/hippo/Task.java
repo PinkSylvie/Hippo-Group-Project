@@ -70,6 +70,8 @@ public class Task extends ParseObject implements Parcelable {
         put(KEY_COMPLETED, isDone);
     }
 
+
+
     public void setReminder(Date reminder){
         put(KEY_REMINDER_TIME, reminder);
     }

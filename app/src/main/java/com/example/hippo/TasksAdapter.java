@@ -2,18 +2,21 @@ package com.example.hippo;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.hippo.fragments.TaskFragment;
 import com.parse.ParseFile;
 
 
@@ -81,6 +84,22 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ViewHolder> 
             tvTitle.setText(task.getTitle());
             tvDueDate.setText(task.getDueDateStr());
             tvDueTime.setText(task.getDueTime12HourStr());
+            cbDone.setChecked(task.isDone());
+            cbDone.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(task.isDone()){
+                        task.setCompletion(false);
+                    }
+                    else{
+                        task.setCompletion(true);
+                    }
+                    cbDone.setChecked(task.isDone());
+                    task.saveInBackground();
+
+                }
+
+            });
             tvTitle.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
