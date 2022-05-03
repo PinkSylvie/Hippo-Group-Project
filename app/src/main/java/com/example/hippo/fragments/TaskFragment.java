@@ -70,7 +70,7 @@ public class TaskFragment extends Fragment {
         ParseQuery<Task> query = ParseQuery.getQuery(Task.class);
         query.include(Task.KEY_USER);
         query.setLimit(20);
-        query.addDescendingOrder(Task.KEY_CREATED_TIME);
+        query.orderByAscending(Task.KEY_DUE_TIME);
         query.findInBackground(new FindCallback<Task>() {
 
             @Override

@@ -7,7 +7,9 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.ImageDecoder;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -43,6 +45,10 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -53,6 +59,8 @@ import kotlin.jvm.internal.CollectionToArray;
 
 public class ComposeFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     public static final String TAG = "ComposeFragment";
+
+    private static final int FILE_SELECT_CODE = 0;
 
     public static final String TIME12HOUR = "hh:mm a";
     public static final String TIME24HOUR = "HH:mm";
@@ -71,6 +79,8 @@ public class ComposeFragment extends Fragment implements AdapterView.OnItemSelec
     private EditText etDate;
     private EditText etTime;
 
+    private TextView tvAttachment;
+
     private Spinner spinReminder;
 
     private ArrayAdapter<String> spinAdapter;
@@ -78,6 +88,7 @@ public class ComposeFragment extends Fragment implements AdapterView.OnItemSelec
     private Button btnAdd;
 
     private Calendar dueDate;
+    private File attachment;
 
     public ComposeFragment() {
     }
@@ -98,6 +109,9 @@ public class ComposeFragment extends Fragment implements AdapterView.OnItemSelec
         btnAdd = view.findViewById(R.id.btnCompose_task_create);
         spinReminder = view.findViewById(R.id.spinCompose_task_reminder);
 
+        tvAttachment = view.findViewById(R.id.tvCompose_task_attachment);
+
+
         etDate.setInputType(InputType.TYPE_NULL);
         etTime.setInputType(InputType.TYPE_NULL);
 
@@ -107,6 +121,8 @@ public class ComposeFragment extends Fragment implements AdapterView.OnItemSelec
 
         etDate.setOnClickListener(selectDate);
         etTime.setOnClickListener(selectTime);
+
+        tvAttachment.setOnClickListener(attachFile);
 
         dueDate = Calendar.getInstance();
 
@@ -132,6 +148,18 @@ public class ComposeFragment extends Fragment implements AdapterView.OnItemSelec
             task.setDueTime(dueDate.getTime());
             task.setReminder(setReminder().getTime());
             task.setCompletion(false);
+
+            String hard_coded_path = "/Internal storage/Android/media/com.whatsapp/WhatsApp/Media/WhatsApp Images/ IMG-20220413-WA0010.jpg";
+
+            if(attachment != null){
+                try {
+                    byte[] data = Files.readAllBytes(Paths.get(hard_coded_path));
+                    ParseFile file = new ParseFile("attachment", data);
+                    task.setAttachment(file);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
 
             task.saveInBackground(new SaveCallback() {
                 @Override
@@ -167,6 +195,37 @@ public class ComposeFragment extends Fragment implements AdapterView.OnItemSelec
             datePicker.show();
         }
     };
+
+    View.OnClickListener attachFile = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+            intent.setType("*/*");
+            intent.addCategory(Intent.CATEGORY_OPENABLE);
+
+            try{
+                startActivityForResult(
+                        Intent.createChooser(intent, "Select a file to attach"), FILE_SELECT_CODE);
+            }catch (android.content.ActivityNotFoundException e){
+                Toast.makeText(view.getContext(), "Please install a File Manager", Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data){ // Deprecated function. What's the alternative?
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK){
+            if(requestCode == FILE_SELECT_CODE){
+                Uri selectedData = data.getData();
+
+                if(null != selectedData){
+                    attachment = new File(selectedData.getPath());
+                    Log.i(TAG, "file is: " + attachment);
+                    tvAttachment.setText(attachment.getAbsolutePath());
+                }
+            }
+        }
+    }
 
     View.OnClickListener selectTime = new View.OnClickListener() {
         @Override

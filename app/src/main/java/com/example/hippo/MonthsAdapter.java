@@ -10,6 +10,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.time.Month;
@@ -27,8 +28,6 @@ public class MonthsAdapter extends RecyclerView.Adapter<MonthsAdapter.ViewHolder
 
     Context context;
     List<HippoMonth> months;
-
-
 
     public MonthsAdapter(Context context, List<HippoMonth> months){
         this.context = context;
@@ -58,18 +57,29 @@ public class MonthsAdapter extends RecyclerView.Adapter<MonthsAdapter.ViewHolder
         TextView tvMonth;
         TextView tvYear;
         TableLayout tlMonth;
+        RecyclerView rvTasks;
+
 
         public ViewHolder(@NonNull View itemView){
             super(itemView);
             tvMonth = itemView.findViewById(R.id.tvMonth);
             tvYear = itemView.findViewById(R.id.tvYear);
             tlMonth = itemView.findViewById(R.id.tlMonth);
+            rvTasks = itemView.findViewById(R.id.rvMonthTasks);
+
+            LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
+            rvTasks.setLayoutManager(layoutManager);
         }
         //Populate
         public void bind(HippoMonth month){
             tvYear.setText(String.valueOf(month.getYear()));
             tvMonth.setText(month.getMonth());
             month.arrangeDays(tlMonth);
+
+            CalendarTasksAdapter adapter = new CalendarTasksAdapter(context, month);
+            rvTasks.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
+
         }
 
     }
