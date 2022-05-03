@@ -33,19 +33,20 @@ Our app is an organization app that helps the user to organize what they need to
 - [X] Setup User Signin
 - [X] Setup Task Compose
 - [X] Setup Task View
-- [X] Start Calendar View
+- [X] SetUp Calendar View
+- [X] SetUp Calendar Tasks
 - [X] Added Detail View
 - [X] Setup User Logout
+- [X] SetUp User Settings 
 
 **Required Must-have Stories**
 
-* User has the ability to make lists with reminder and dates.
-* The user would be able to create notes.
-* The user would be able to see all their notes and edit them on a separate view.
+- [X] User has the ability to make lists with reminder and dates.
+- [X] The user would be able to create tasks.
 
 **Optional Nice-to-have Stories**
 
-* Add a calendar feature that would be connected to the to-do lists
+- [X] Add a calendar feature that would be connected to the to-do lists
 * Add location of a to-do
 * Add visual themes for the user to pick and change the visual interface 
 
@@ -61,13 +62,17 @@ Here's a walkthrough of implemented user stories:
 
 <img src='https://github.com/PinkSylvie/EDM-Group-Project/blob/main/Hippo%202nd%20Sprint.gif' width='' alt='2nd Sprint Walkthrough' />
 
-
 **3rd Sprint GIF**
 
 Here's a walkthrough of implemented user stories:
 
 <img src='https://github.com/PinkSylvie/EDM-Group-Project/blob/main/Hippo%203rd%20Sprint.gif' width='' alt='3rd Sprint Walkthrough' />
 
+**Final Sprint GIF**
+
+Here's a walkthrough of implemented user stories:
+
+<img src='https://github.com/PinkSylvie/EDM-Group-Project/blob/main/Hippo%20Final%20Sprint.gif' width='' alt='Final Sprint Walkthrough' />
 
 
 ### 2. Screen Archetypesm
