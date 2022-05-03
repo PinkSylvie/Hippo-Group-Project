@@ -5,7 +5,7 @@ Unit 8: Group Milestone - Hippo
 
 
 # Hippo
-
+![Hippo](app/src/main/res/mipmap-xxxhdpi/ic_app_logo.png)
 ## Table of Contents
 1. [Overview](#Overview)
 1. [Product Spec](#Product-Spec)
