@@ -33,9 +33,7 @@ public class SignInActivity extends SignUpActivity{
         tvSignUp.setOnClickListener(goSignUpActivity);
 
         if(HippoUser.getCurrentUser()!=null){
-            //comentado de momento para probar las distintas partes del sign in / log in
-            // Crear el boton de log out para que esta parte sea funcional, dejando tu usuario en la app
-            //goMainActivity();
+            goMainActivity();
         }
         etSignInEmail = findViewById(R.id.etSignInEmail);
         etSignInPassword = findViewById(R.id.etSignInPassword);
