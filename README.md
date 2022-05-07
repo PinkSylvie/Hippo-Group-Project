@@ -74,6 +74,12 @@ Here's a walkthrough of implemented user stories:
 
 <img src='https://github.com/PinkSylvie/EDM-Group-Project/blob/main/Hippo%20Final%20Sprint.gif' width='' alt='Final Sprint Walkthrough' />
 
+**App Walkthrough**
+ 
+ Here's a presentation on our app: 
+ 
+ https://docs.google.com/presentation/d/1gAUw0J-iMwikbIGmPw2gZ9dhlv3ehfKzo-BSQUubtS4/edit#slide=id.p
+
 
 ### 2. Screen Archetypesm
 
